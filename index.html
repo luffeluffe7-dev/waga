@@ -20,8 +20,9 @@
       line-height: 1.8;
     }
 
+    /* الشريط العلوي */
     header {
-      padding: 20px 8%;
+      padding: 12px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -31,16 +32,22 @@
       z-index: 10;
     }
 
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-      color: #35d07f;
+    /* صورة الشعار */
+    .logo-img {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+      border-radius: 12px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 10px;
+    }
+
+    nav a:hover {
+      color: #35d07f;
     }
 
     .hero {
@@ -149,24 +156,38 @@
       nav {
         display: none;
       }
+
+      .logo-img {
+        width: 55px;
+        height: 55px;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- الشريط العلوي -->
   <header>
-    <div class="logo">وقاء</div>
+
+    <img
+      src="8586705E-877E-4BE5-B2F9-0A62E613582F.jpeg"
+      alt="شعار وقاء"
+      class="logo-img"
+    >
 
     <nav>
       <a href="#about">من نحن</a>
       <a href="#how">كيف يعمل</a>
       <a href="#contact">تواصل معنا</a>
     </nav>
+
   </header>
 
+  <!-- الرئيسية -->
   <section class="hero">
     <div>
+
       <h1>حماية تبدأ مع <span>وقاء</span></h1>
 
       <p>
@@ -176,10 +197,13 @@
       </p>
 
       <a class="button" href="#how">اكتشف المشروع</a>
+
     </div>
   </section>
 
+  <!-- من نحن -->
   <section id="about" class="about">
+
     <h2>من نحن؟</h2>
 
     <p>
@@ -187,9 +211,12 @@
       تساعد على تعزيز السلامة في المنازل من خلال
       اكتشاف تسرب الغاز وإرسال تنبيه للمستخدم.
     </p>
+
   </section>
 
+  <!-- كيف يعمل -->
   <section id="how">
+
     <h2>كيف يعمل وقاء؟</h2>
 
     <div class="cards">
@@ -220,9 +247,12 @@
       </div>
 
     </div>
+
   </section>
 
+  <!-- التواصل -->
   <section id="contact">
+
     <h2>تواصل معنا</h2>
 
     <p>تابع مشروع وقاء على إنستغرام</p>
@@ -232,6 +262,7 @@
     <div class="instagram">
       @97655z
     </div>
+
   </section>
 
   <footer>
