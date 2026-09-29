@@ -1,91 +1,168 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>وقاء | نظام ذكي لاكتشاف تسرب الغاز</title>
+<title>وقاء | WIQAA</title>
 
-<meta name="description" content="وقاء - مشروع طلابي لنظام ذكي يساعد على اكتشاف تسرب الغاز وتنبيه المستخدم.">
+<meta name="description"
+content="وقاء - مشروع طلابي ذكي للمساعدة في اكتشاف تسرب الغاز وتنبيه المستخدم.">
 
 <style>
 
 /* =====================================================
-   ROOT
+   WIQAA — BURGUNDY EDITION
 ===================================================== */
 
-:root{
-  --bg:#07080c;
-  --bg2:#0d0f15;
-  --card:rgba(20,20,28,.72);
-  --red:#a50034;
-  --red2:#d00045;
-  --light:#ffffff;
-  --muted:#a9abb3;
-  --border:rgba(165,0,52,.25);
-  --shadow:0 20px 60px rgba(0,0,0,.35);
-}
-
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,Tahoma,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
-html{
-  scroll-behavior:smooth;
+:root{
+    --burgundy:#8f002d;
+    --burgundy2:#b0003a;
+    --burgundy3:#d41450;
+    --dark:#090306;
+    --dark2:#12070b;
+    --card:#190a10;
+    --card2:#230c15;
+    --white:#ffffff;
+    --gray:#b9adb1;
+    --line:rgba(255,255,255,.09);
+    --glow:rgba(143,0,45,.35);
 }
 
 body{
-  background:var(--bg);
-  color:white;
-  overflow-x:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at 15% 10%,rgba(143,0,45,.25),transparent 30%),
+        radial-gradient(circle at 85% 30%,rgba(176,0,58,.13),transparent 28%),
+        var(--dark);
+    color:var(--white);
+    overflow-x:hidden;
 }
 
 a{
-  text-decoration:none;
-  color:inherit;
+    color:inherit;
+    text-decoration:none;
 }
 
-::selection{
-  background:var(--red);
-  color:white;
+button{
+    font-family:inherit;
+    cursor:pointer;
 }
 
 
 /* =====================================================
-   خلفية
+   LANGUAGE SCREEN
 ===================================================== */
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-2;
+#languageScreen{
+    position:fixed;
+    inset:0;
+    z-index:99999;
 
-  background:
-    radial-gradient(circle at 15% 15%,rgba(165,0,52,.14),transparent 28%),
-    radial-gradient(circle at 85% 30%,rgba(165,0,52,.10),transparent 30%),
-    radial-gradient(circle at 50% 90%,rgba(165,0,52,.08),transparent 30%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        radial-gradient(circle at center,
+        rgba(143,0,45,.30),
+        transparent 38%),
+        #090306;
+
+    transition:.7s;
 }
 
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
+.languageBox{
+    width:min(620px,92%);
+    padding:50px 30px;
+    text-align:center;
 
-  opacity:.18;
+    background:rgba(25,10,16,.90);
+    border:1px solid rgba(176,0,58,.35);
+    border-radius:30px;
 
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.65),
+        0 0 80px rgba(143,0,45,.12);
 
-  background-size:45px 45px;
+    backdrop-filter:blur(20px);
+}
+
+.logoCircle{
+    width:115px;
+    height:115px;
+    margin:0 auto 20px;
+
+    border:4px solid var(--burgundy);
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 0 30px rgba(143,0,45,.25),
+        inset 0 0 25px rgba(143,0,45,.12);
+}
+
+.logoCircle span{
+    color:var(--burgundy2);
+    font-size:35px;
+    font-weight:900;
+}
+
+.languageBox h1{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.languageBox p{
+    color:var(--gray);
+    margin-bottom:30px;
+}
+
+.languages{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.langBtn{
+    min-width:220px;
+    padding:18px 25px;
+
+    border:1px solid rgba(176,0,58,.25);
+    border-radius:18px;
+
+    background:#210b13;
+    color:white;
+
+    font-size:18px;
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.langBtn:hover{
+    transform:translateY(-6px);
+
+    border-color:var(--burgundy2);
+
+    box-shadow:
+        0 15px 40px rgba(143,0,45,.25);
+}
+
+.flag{
+    font-size:31px;
+    margin-left:8px;
 }
 
 
@@ -94,97 +171,82 @@ body::after{
 ===================================================== */
 
 header{
-  position:fixed;
-  top:0;
-  right:0;
-  left:0;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
 
-  height:82px;
+    padding:18px 7%;
 
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-  padding:0 7%;
+    background:rgba(9,3,6,.75);
+    backdrop-filter:blur(18px);
 
-  background:rgba(7,8,12,.72);
-  backdrop-filter:blur(20px);
-
-  border-bottom:1px solid rgba(255,255,255,.06);
-
-  z-index:1000;
+    border-bottom:1px solid var(--line);
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:13px;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:25px;
+    font-weight:900;
 }
 
-.logo-img{
-  width:58px;
-  height:58px;
-  object-fit:contain;
-  border-radius:50%;
+.logoMark{
+    width:40px;
+    height:40px;
 
-  filter:drop-shadow(0 0 18px rgba(165,0,52,.45));
+    border:2px solid var(--burgundy2);
+    border-radius:50%;
 
-  transition:.35s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--burgundy3);
+
+    font-size:13px;
 }
 
-.logo-img:hover{
-  transform:rotate(-4deg) scale(1.08);
+.logoText{
+    color:var(--burgundy3);
 }
 
-.brand-name{
-  font-size:21px;
-  font-weight:900;
-}
-
-.brand-name span{
-  color:var(--red2);
+.logoText span{
+    color:white;
 }
 
 nav{
-  display:flex;
-  align-items:center;
-  gap:8px;
+    display:flex;
+    align-items:center;
+    gap:25px;
 }
 
 nav a{
-  padding:10px 16px;
-  border-radius:12px;
-
-  color:#d8d8dd;
-  font-weight:bold;
-
-  transition:.3s;
+    color:#ddd3d6;
+    font-size:15px;
+    transition:.3s;
 }
 
 nav a:hover{
-  color:white;
-  background:rgba(165,0,52,.16);
+    color:var(--burgundy3);
 }
 
+.languageSwitch{
+    padding:9px 14px;
 
-/* =====================================================
-   MOBILE MENU
-===================================================== */
+    border-radius:12px;
 
-.menu-btn{
-  display:none;
+    background:#1b0910;
+    color:white;
 
-  width:45px;
-  height:45px;
-
-  border:1px solid var(--border);
-  border-radius:12px;
-
-  background:rgba(165,0,52,.08);
-  color:white;
-
-  font-size:22px;
-  cursor:pointer;
+    border:1px solid var(--line);
 }
 
 
@@ -193,220 +255,126 @@ nav a:hover{
 ===================================================== */
 
 .hero{
-  min-height:100vh;
+    min-height:100vh;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  text-align:center;
+    text-align:center;
 
-  padding:130px 20px 80px;
+    padding:150px 7% 90px;
 
-  position:relative;
-  overflow:hidden;
+    position:relative;
 }
 
-.hero-orb{
-  position:absolute;
+.hero:before{
+    content:"";
+    position:absolute;
 
-  width:600px;
-  height:600px;
+    width:500px;
+    height:500px;
 
-  border-radius:50%;
+    background:rgba(143,0,45,.13);
+    filter:blur(100px);
+    border-radius:50%;
 
-  border:1px solid rgba(165,0,52,.13);
-
-  box-shadow:
-    0 0 100px rgba(165,0,52,.08),
-    inset 0 0 100px rgba(165,0,52,.04);
-
-  animation:orb 7s infinite ease-in-out;
+    z-index:-1;
 }
 
-.hero-orb::before,
-.hero-orb::after{
-  content:"";
-
-  position:absolute;
-  inset:60px;
-
-  border:1px solid rgba(165,0,52,.08);
-  border-radius:50%;
-}
-
-.hero-orb::after{
-  inset:130px;
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-
-  max-width:900px;
-
-  animation:heroIn 1s ease;
+.heroContent{
+    max-width:900px;
 }
 
 .badge{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
+    display:inline-block;
 
-  padding:9px 17px;
+    padding:10px 20px;
 
-  border:1px solid var(--border);
-  border-radius:999px;
+    border-radius:50px;
 
-  background:rgba(165,0,52,.08);
+    background:rgba(143,0,45,.12);
+    border:1px solid rgba(176,0,58,.35);
 
-  color:#e7b5c4;
+    color:#e32661;
 
-  font-size:14px;
-  font-weight:bold;
-
-  margin-bottom:25px;
-}
-
-.badge-dot{
-  width:8px;
-  height:8px;
-
-  background:#d00045;
-  border-radius:50%;
-
-  box-shadow:0 0 15px #d00045;
-
-  animation:blink 1.5s infinite;
+    margin-bottom:25px;
 }
 
 .hero h1{
-  font-size:clamp(45px,7vw,82px);
-  line-height:1.12;
-
-  font-weight:900;
-
-  margin-bottom:25px;
-
-  letter-spacing:-2px;
+    font-size:clamp(50px,9vw,100px);
+    line-height:1;
+    font-weight:900;
+    margin-bottom:25px;
 }
 
-.hero h1 span{
-  color:var(--red2);
+.hero h1 .red{
+    color:var(--burgundy3);
 
-  text-shadow:
-    0 0 35px rgba(208,0,69,.35);
+    text-shadow:
+        0 0 30px rgba(176,0,58,.22);
 }
 
 .hero p{
-  max-width:720px;
+    max-width:720px;
+    margin:auto;
 
-  margin:auto;
+    color:var(--gray);
 
-  color:#bfc0c7;
-
-  font-size:19px;
-
-  line-height:2;
+    font-size:19px;
+    line-height:1.9;
 }
 
-.hero-buttons{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
 
-  margin-top:35px;
+    margin-top:35px;
+
+    flex-wrap:wrap;
 }
 
-.btn{
-  padding:15px 28px;
+.primary{
+    padding:15px 32px;
 
-  border-radius:13px;
+    border-radius:14px;
 
-  font-weight:bold;
+    background:linear-gradient(
+        135deg,
+        var(--burgundy),
+        var(--burgundy2)
+    );
 
-  transition:.3s;
+    color:white;
+    font-weight:bold;
+
+    box-shadow:0 10px 35px rgba(143,0,45,.25);
+
+    transition:.3s;
 }
 
-.btn-primary{
-  background:linear-gradient(135deg,var(--red),var(--red2));
-
-  box-shadow:
-    0 12px 35px rgba(165,0,52,.25);
+.primary:hover{
+    transform:translateY(-5px);
+    box-shadow:0 18px 45px rgba(143,0,45,.38);
 }
 
-.btn-primary:hover{
-  transform:translateY(-5px);
-  box-shadow:
-    0 18px 45px rgba(165,0,52,.4);
+.secondary{
+    padding:15px 32px;
+
+    border-radius:14px;
+
+    background:#180910;
+    border:1px solid var(--line);
+
+    color:white;
+
+    transition:.3s;
 }
 
-.btn-secondary{
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.035);
-}
-
-.btn-secondary:hover{
-  transform:translateY(-5px);
-  background:rgba(255,255,255,.08);
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-.stats{
-  max-width:900px;
-
-  margin:-30px auto 0;
-
-  padding:0 20px;
-
-  position:relative;
-  z-index:5;
-}
-
-.stats-box{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-
-  background:rgba(16,17,23,.75);
-
-  border:1px solid rgba(255,255,255,.07);
-
-  border-radius:22px;
-
-  backdrop-filter:blur(18px);
-
-  overflow:hidden;
-
-  box-shadow:var(--shadow);
-}
-
-.stat{
-  padding:28px 15px;
-  text-align:center;
-
-  border-left:1px solid rgba(255,255,255,.06);
-}
-
-.stat:last-child{
-  border-left:0;
-}
-
-.stat strong{
-  display:block;
-
-  font-size:28px;
-
-  color:white;
-}
-
-.stat span{
-  color:#888b94;
-  font-size:14px;
+.secondary:hover{
+    transform:translateY(-5px);
+    border-color:var(--burgundy2);
 }
 
 
@@ -415,40 +383,27 @@ nav a:hover{
 ===================================================== */
 
 section{
-  padding:120px 8%;
+    padding:100px 7%;
 }
 
-.section-head{
-  text-align:center;
-
-  max-width:750px;
-
-  margin:0 auto 55px;
+.sectionTitle{
+    text-align:center;
+    margin-bottom:55px;
 }
 
-.eyebrow{
-  color:#d00045;
-
-  font-size:13px;
-  font-weight:900;
-
-  letter-spacing:1px;
-
-  margin-bottom:12px;
+.sectionTitle small{
+    color:#d41450;
+    font-weight:bold;
+    letter-spacing:2px;
 }
 
-.section-head h2{
-  font-size:clamp(32px,4vw,48px);
-
-  margin-bottom:18px;
+.sectionTitle h2{
+    font-size:43px;
+    margin:10px 0;
 }
 
-.section-head p{
-  color:#92949d;
-
-  font-size:17px;
-
-  line-height:1.9;
+.sectionTitle p{
+    color:var(--gray);
 }
 
 
@@ -457,362 +412,317 @@ section{
 ===================================================== */
 
 .about{
-  background:
-    linear-gradient(
-      180deg,
-      transparent,
-      rgba(165,0,52,.035),
-      transparent
-    );
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(30,8,15,.8),
+            transparent
+        );
 }
 
-.about-grid{
-  max-width:1100px;
+.aboutBox{
+    max-width:1050px;
+    margin:auto;
 
-  margin:auto;
+    padding:60px 45px;
 
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
+    text-align:center;
 
-  gap:35px;
+    background:
+        linear-gradient(
+            145deg,
+            #1b0910,
+            #0d0508
+        );
 
-  align-items:stretch;
+    border:1px solid var(--line);
+    border-radius:30px;
+
+    box-shadow:0 25px 80px rgba(0,0,0,.25);
 }
 
-.about-card,
-.info-card{
-  background:var(--card);
+.aboutBox h2{
+    font-size:43px;
+    margin-bottom:20px;
 
-  border:1px solid rgba(255,255,255,.07);
-
-  border-radius:25px;
-
-  padding:38px;
-
-  backdrop-filter:blur(15px);
-
-  box-shadow:var(--shadow);
-
-  transition:.35s;
+    color:var(--burgundy3);
 }
 
-.about-card:hover,
-.info-card:hover{
-  transform:translateY(-7px);
+.aboutBox p{
+    color:var(--gray);
 
-  border-color:var(--border);
-}
-
-.about-card h3{
-  font-size:27px;
-  margin-bottom:17px;
-}
-
-.about-card p{
-  color:#aeb0b8;
-  line-height:2;
-  font-size:17px;
-}
-
-.quote{
-  margin-top:25px;
-
-  padding:18px;
-
-  border-right:3px solid var(--red);
-
-  background:rgba(165,0,52,.06);
-
-  color:#ddd;
-}
-
-.info-list{
-  display:grid;
-  gap:15px;
-}
-
-.info-item{
-  display:flex;
-  align-items:center;
-  gap:15px;
-
-  padding:17px;
-
-  border-radius:15px;
-
-  background:rgba(255,255,255,.035);
-
-  border:1px solid rgba(255,255,255,.05);
-}
-
-.info-icon{
-  width:45px;
-  height:45px;
-
-  display:grid;
-  place-items:center;
-
-  background:rgba(165,0,52,.13);
-
-  border-radius:13px;
-
-  font-size:21px;
-}
-
-.info-item div strong{
-  display:block;
-  margin-bottom:3px;
-}
-
-.info-item div span{
-  color:#858892;
-  font-size:13px;
+    font-size:18px;
+    line-height:2;
 }
 
 
 /* =====================================================
-   HOW IT WORKS
+   CARDS
 ===================================================== */
 
-.how{
-  background:#0a0b10;
+.cards{
+    max-width:1150px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:22px;
 }
 
+.card{
+    padding:35px 27px;
+
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1a0910,
+            #0e0508
+        );
+
+    border:1px solid var(--line);
+
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+
+    border-color:rgba(176,0,58,.45);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.35),
+        0 0 35px rgba(143,0,45,.08);
+}
+
+.icon{
+    width:68px;
+    height:68px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:20px;
+
+    background:rgba(143,0,45,.12);
+    border:1px solid rgba(176,0,58,.20);
+
+    font-size:32px;
+
+    margin-bottom:22px;
+}
+
+.card h3{
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:var(--gray);
+    line-height:1.8;
+}
+
+
+/* =====================================================
+   STEPS
+===================================================== */
+
 .steps{
-  max-width:1100px;
+    max-width:1150px;
+    margin:auto;
 
-  margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
 
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-
-  gap:22px;
+    gap:20px;
 }
 
 .step{
-  position:relative;
+    padding:38px;
 
-  padding:35px 27px;
+    text-align:center;
 
-  border-radius:23px;
+    background:#12070b;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(25,22,30,.9),
-      rgba(12,14,20,.9)
-    );
+    border:1px solid var(--line);
+    border-radius:24px;
 
-  border:1px solid rgba(255,255,255,.07);
-
-  overflow:hidden;
-
-  transition:.35s;
+    transition:.3s;
 }
 
 .step:hover{
-  transform:translateY(-9px);
-
-  border-color:var(--border);
-
-  box-shadow:
-    0 20px 55px rgba(165,0,52,.13);
+    transform:translateY(-8px);
+    border-color:rgba(176,0,58,.35);
 }
 
-.step-number{
-  position:absolute;
+.number{
+    width:58px;
+    height:58px;
 
-  top:18px;
-  left:20px;
+    margin:0 auto 20px;
 
-  font-size:55px;
+    border-radius:50%;
 
-  font-weight:900;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  color:rgba(255,255,255,.035);
-}
+    background:
+        linear-gradient(
+            135deg,
+            var(--burgundy),
+            var(--burgundy2)
+        );
 
-.step-icon{
-  width:65px;
-  height:65px;
+    color:white;
 
-  display:grid;
-  place-items:center;
+    font-weight:900;
 
-  border-radius:18px;
-
-  background:rgba(165,0,52,.12);
-
-  font-size:29px;
-
-  margin-bottom:23px;
+    box-shadow:0 8px 25px rgba(143,0,45,.25);
 }
 
 .step h3{
-  font-size:22px;
-  margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .step p{
-  color:#92949d;
-  line-height:1.9;
+    color:var(--gray);
+    line-height:1.8;
 }
 
 
 /* =====================================================
-   FEATURES
+   APP
 ===================================================== */
 
-.features{
-  max-width:1100px;
+.appBox{
+    max-width:1100px;
+    margin:auto;
 
-  margin:auto;
+    padding:65px 40px;
 
-  display:grid;
+    text-align:center;
 
-  grid-template-columns:repeat(2,1fr);
+    border-radius:30px;
 
-  gap:20px;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(143,0,45,.22),
+            transparent 55%
+        ),
+        #12070b;
+
+    border:1px solid var(--line);
 }
 
-.feature{
-  padding:28px;
-
-  border:1px solid rgba(255,255,255,.06);
-
-  border-radius:20px;
-
-  background:rgba(255,255,255,.025);
-
-  display:flex;
-
-  gap:18px;
-
-  transition:.3s;
+.appBox h2{
+    font-size:43px;
+    margin-bottom:15px;
 }
 
-.feature:hover{
-  background:rgba(165,0,52,.06);
-
-  transform:translateX(-5px);
-
-  border-color:var(--border);
+.appBox h2 span{
+    color:var(--burgundy3);
 }
 
-.feature-icon{
-  flex-shrink:0;
+.appBox p{
+    max-width:700px;
+    margin:auto;
 
-  width:50px;
-  height:50px;
+    color:var(--gray);
 
-  display:grid;
-  place-items:center;
-
-  border-radius:14px;
-
-  background:linear-gradient(
-    135deg,
-    rgba(165,0,52,.22),
-    rgba(165,0,52,.06)
-  );
-
-  font-size:22px;
-}
-
-.feature h3{
-  margin-bottom:7px;
-}
-
-.feature p{
-  color:#8f919a;
-  font-size:14px;
-  line-height:1.8;
+    line-height:1.9;
 }
 
 
 /* =====================================================
-   CTA
+   INSTAGRAM
 ===================================================== */
-
-.cta{
-  padding:90px 20px;
-
-  text-align:center;
-}
-
-.cta-box{
-  max-width:1000px;
-
-  margin:auto;
-
-  padding:65px 30px;
-
-  border-radius:30px;
-
-  position:relative;
-  overflow:hidden;
-
-  border:1px solid var(--border);
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(165,0,52,.20),
-      rgba(165,0,52,.03) 55%,
-      transparent 75%
-    ),
-    #101118;
-}
-
-.cta-box h2{
-  font-size:40px;
-  margin-bottom:15px;
-}
-
-.cta-box p{
-  color:#9c9ea7;
-  margin-bottom:28px;
-}
-
-
-/* =====================================================
-   CONTACT
-===================================================== */
-
-.contact{
-  text-align:center;
-
-  background:#0b0c11;
-}
 
 .instagram{
-  display:inline-flex;
-
-  align-items:center;
-  gap:10px;
-
-  margin-top:25px;
-
-  padding:15px 28px;
-
-  border-radius:14px;
-
-  border:1px solid var(--border);
-
-  background:rgba(165,0,52,.07);
-
-  font-size:18px;
-  font-weight:bold;
-
-  transition:.35s;
+    text-align:center;
 }
 
-.instagram:hover{
-  transform:translateY(-5px);
+.instagramBox{
+    max-width:600px;
+    margin:auto;
 
-  background:var(--red);
+    padding:40px;
 
-  box-shadow:0 15px 40px rgba(165,0,52,.3);
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1b0910,
+            #0c0407
+        );
+
+    border:1px solid var(--line);
+
+    transition:.3s;
+}
+
+.instagramBox:hover{
+    transform:translateY(-8px);
+}
+
+.instagramLogo{
+    width:76px;
+    height:76px;
+
+    margin:0 auto 20px;
+
+    border-radius:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:42px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #833ab4,
+            #fd1d1d,
+            #fcb045
+        );
+}
+
+.instagramBox h3{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.instagramBox p{
+    color:var(--gray);
+    margin-bottom:22px;
+}
+
+.instagramButton{
+    display:inline-block;
+
+    padding:13px 28px;
+
+    border-radius:14px;
+
+    background:white;
+    color:#111;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.instagramButton:hover{
+    transform:scale(1.05);
 }
 
 
@@ -821,80 +731,54 @@ section{
 ===================================================== */
 
 footer{
-  padding:30px 20px;
+    padding:45px 7%;
 
-  text-align:center;
+    text-align:center;
 
-  color:#686a73;
+    background:#050204;
 
-  font-size:14px;
+    border-top:1px solid var(--line);
 
-  border-top:1px solid rgba(255,255,255,.06);
-
-  background:#050609;
+    color:#8f8287;
 }
 
 footer strong{
-  color:#d00045;
+    color:var(--burgundy3);
 }
 
 
 /* =====================================================
-   SCROLL REVEAL
+   TOP BUTTON
 ===================================================== */
 
-.reveal{
-  opacity:0;
+#top{
+    position:fixed;
 
-  transform:translateY(35px);
+    bottom:25px;
+    right:25px;
 
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
-}
+    width:50px;
+    height:50px;
 
-.reveal.show{
-  opacity:1;
-  transform:translateY(0);
-}
+    border:1px solid rgba(255,255,255,.1);
 
+    border-radius:15px;
 
-/* =====================================================
-   ANIMATIONS
-===================================================== */
+    background:
+        linear-gradient(
+            135deg,
+            var(--burgundy),
+            var(--burgundy2)
+        );
 
-@keyframes heroIn{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
+    color:white;
 
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
+    font-size:21px;
+    font-weight:bold;
 
-@keyframes orb{
-  0%,100%{
-    transform:scale(.9);
-    opacity:.45;
-  }
+    display:none;
 
-  50%{
-    transform:scale(1.08);
-    opacity:.9;
-  }
-}
-
-@keyframes blink{
-  0%,100%{
-    opacity:1;
-  }
-
-  50%{
-    opacity:.25;
-  }
+    z-index:100;
 }
 
 
@@ -904,138 +788,57 @@ footer strong{
 
 @media(max-width:800px){
 
-  header{
-    height:72px;
-    padding:0 20px;
-  }
+    header{
+        padding:15px 5%;
+    }
 
-  .logo-img{
-    width:50px;
-    height:50px;
-  }
+    nav{
+        display:none;
+    }
 
-  .brand-name{
-    font-size:18px;
-  }
+    .hero{
+        padding-top:135px;
+    }
 
-  nav{
-    position:absolute;
+    .hero h1{
+        font-size:55px;
+    }
 
-    top:78px;
-    right:15px;
-    left:15px;
+    .hero p{
+        font-size:16px;
+    }
 
-    padding:12px;
+    section{
+        padding:75px 5%;
+    }
 
-    display:none;
-    flex-direction:column;
+    .cards,
+    .steps{
+        grid-template-columns:1fr;
+    }
 
-    background:rgba(10,11,16,.96);
+    .sectionTitle h2,
+    .aboutBox h2,
+    .appBox h2{
+        font-size:32px;
+    }
 
-    border:1px solid rgba(255,255,255,.08);
+    .aboutBox,
+    .appBox{
+        padding:35px 22px;
+    }
 
-    border-radius:18px;
+    .languageBox{
+        padding:40px 20px;
+    }
 
-    backdrop-filter:blur(20px);
-  }
+    .languages{
+        flex-direction:column;
+    }
 
-  nav.active{
-    display:flex;
-  }
-
-  nav a{
-    width:100%;
-    text-align:center;
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  .hero{
-    padding-top:115px;
-  }
-
-  .hero-orb{
-    width:400px;
-    height:400px;
-  }
-
-  .hero p{
-    font-size:16px;
-  }
-
-  .stats-box{
-    grid-template-columns:1fr;
-  }
-
-  .stat{
-    border-left:0;
-    border-bottom:1px solid rgba(255,255,255,.06);
-  }
-
-  .stat:last-child{
-    border-bottom:0;
-  }
-
-  section{
-    padding:85px 20px;
-  }
-
-  .about-grid,
-  .steps,
-  .features{
-    grid-template-columns:1fr;
-  }
-
-  .about-card,
-  .info-card{
-    padding:27px;
-  }
-
-  .cta-box{
-    padding:50px 20px;
-  }
-
-  .cta-box h2{
-    font-size:30px;
-  }
-}
-
-@media(max-width:430px){
-
-  .hero h1{
-    font-size:43px;
-  }
-
-  .hero-buttons{
-    flex-direction:column;
-  }
-
-  .btn{
-    width:100%;
-  }
-
-  .step{
-    padding:30px 22px;
-  }
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *::before,
-  *::after{
-    animation:none!important;
-    transition:none!important;
-    scroll-behavior:auto!important;
-  }
-
+    .langBtn{
+        width:100%;
+    }
 }
 
 </style>
@@ -1046,46 +849,92 @@ footer strong{
 
 
 <!-- =====================================================
+     LANGUAGE
+===================================================== -->
+
+<div id="languageScreen">
+
+    <div class="languageBox">
+
+        <div class="logoCircle">
+            <span>وقاء</span>
+        </div>
+
+        <h1>اختر لغتك</h1>
+
+        <p>Choose your language</p>
+
+        <div class="languages">
+
+            <button class="langBtn" onclick="setArabic()">
+                🇴🇲 العربية
+            </button>
+
+            <button class="langBtn" onclick="setEnglish()">
+                🇬🇧 English
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
      HEADER
 ===================================================== -->
 
 <header>
 
-  <a href="#" class="brand">
+    <a href="#" class="logo">
 
-    <img
-      src="8586705E-877E-4BE5-B2F9-0A62E613582F.jpeg"
-      alt="شعار وقاء"
-      class="logo-img"
-    >
+        <div class="logoMark">
+            وقاء
+        </div>
 
-    <div class="brand-name">
-      وقاء <span>•</span>
-    </div>
+        <div class="logoText">
+            وقاء <span>WIQAA</span>
+        </div>
 
-  </a>
+    </a>
 
 
-  <nav id="nav">
+    <nav>
 
-    <a href="#about">من نحن</a>
-    <a href="#how">كيف يعمل</a>
-    <a href="#features">المميزات</a>
-    <a href="#contact">تواصل معنا</a>
+        <a href="#about"
+           data-ar="من نحن"
+           data-en="About Us">
+            من نحن
+        </a>
 
-  </nav>
+        <a href="#how"
+           data-ar="كيف يعمل"
+           data-en="How It Works">
+            كيف يعمل
+        </a>
 
+        <a href="#features"
+           data-ar="المميزات"
+           data-en="Features">
+            المميزات
+        </a>
 
-  <button
-    class="menu-btn"
-    id="menuBtn"
-    aria-label="فتح القائمة"
-  >
-    ☰
-  </button>
+        <a href="#contact"
+           data-ar="تواصل معنا"
+           data-en="Contact">
+            تواصل معنا
+        </a>
+
+        <button
+            class="languageSwitch"
+            onclick="toggleLanguage()">
+            🇬🇧 English
+        </button>
+
+    </nav>
 
 </header>
-
 
 
 <!-- =====================================================
@@ -1094,364 +943,222 @@ footer strong{
 
 <section class="hero">
 
-  <div class="hero-orb"></div>
+    <div class="heroContent">
 
-  <div class="hero-content">
+        <div class="badge"
+             data-ar="🛡️ مشروع طلابي للسلامة الذكية"
+             data-en="🛡️ Student Smart Safety Project">
 
-    <div class="badge">
+            🛡️ مشروع طلابي للسلامة الذكية
 
-      <span class="badge-dot"></span>
+        </div>
 
-      مشروع طلابي تقني
+
+        <h1>
+
+            <span class="red"
+                  data-ar="وقاء"
+                  data-en="WIQAA">
+                وقاء
+            </span>
+
+            <br>
+
+            <span
+                data-ar="حماية تبدأ بإنذار"
+                data-en="Protection Starts With Awareness">
+
+                حماية تبدأ بإنذار
+
+            </span>
+
+        </h1>
+
+
+        <p
+            data-ar="نظام ذكي يساعد على اكتشاف تسرب الغاز وتنبيه المستخدم بسرعة، للمساعدة في تعزيز السلامة داخل المنزل."
+            data-en="A smart system designed to help detect gas leaks and quickly alert users, helping improve safety at home.">
+
+            نظام ذكي يساعد على اكتشاف تسرب الغاز وتنبيه المستخدم بسرعة،
+            للمساعدة في تعزيز السلامة داخل المنزل.
+
+        </p>
+
+
+        <div class="buttons">
+
+            <a href="#about"
+               class="primary"
+               data-ar="اكتشف وقاء"
+               data-en="Discover WIQAA">
+
+                اكتشف وقاء
+
+            </a>
+
+
+            <a href="#how"
+               class="secondary"
+               data-ar="كيف يعمل؟"
+               data-en="How does it work?">
+
+                كيف يعمل؟
+
+            </a>
+
+        </div>
 
     </div>
-
-
-    <h1>
-
-      الأمان يبدأ مع
-
-      <span>وقاء</span>
-
-    </h1>
-
-
-    <p>
-
-      نظام ذكي يساعد على اكتشاف تسرب الغاز
-      وتنبيه المستخدم بسرعة من خلال التطبيق،
-      للمساعدة في تعزيز السلامة وتقليل المخاطر
-      داخل المنزل.
-
-    </p>
-
-
-    <div class="hero-buttons">
-
-      <a
-        href="#how"
-        class="btn btn-primary"
-      >
-        اكتشف كيف يعمل
-      </a>
-
-
-      <a
-        href="#contact"
-        class="btn btn-secondary"
-      >
-        تواصل معنا
-      </a>
-
-    </div>
-
-  </div>
 
 </section>
-
-
-
-<!-- =====================================================
-     STATS
-===================================================== -->
-
-<div class="stats reveal">
-
-  <div class="stats-box">
-
-    <div class="stat">
-
-      <strong>24/7</strong>
-
-      <span>مراقبة مستمرة</span>
-
-    </div>
-
-
-    <div class="stat">
-
-      <strong>⚠️</strong>
-
-      <span>تنبيه عند اكتشاف التسرب</span>
-
-    </div>
-
-
-    <div class="stat">
-
-      <strong>📱</strong>
-
-      <span>متابعة من التطبيق</span>
-
-    </div>
-
-  </div>
-
-</div>
-
 
 
 <!-- =====================================================
      ABOUT
 ===================================================== -->
 
-<section
-  id="about"
-  class="about"
->
+<section id="about" class="about">
 
-  <div class="section-head reveal">
+    <div class="aboutBox">
 
-    <div class="eyebrow">
-      عن المشروع
-    </div>
+        <h2
+            data-ar="من نحن؟"
+            data-en="Who Are We?">
 
-    <h2>
-      من نحن؟
-    </h2>
+            من نحن؟
 
-    <p>
-      فريق طلابي يعمل على تحويل فكرة بسيطة
-      إلى حل تقني يساعد على تعزيز السلامة.
-    </p>
-
-  </div>
+        </h2>
 
 
-  <div class="about-grid">
+        <p
+            data-ar="نحن فريق طلابي نعمل على تطوير فكرة تقنية تساعد على تعزيز السلامة في المنازل من خلال اكتشاف تسرب الغاز وإرسال تنبيه للمستخدم."
+            data-en="We are a student team developing a technology idea that helps improve home safety by detecting gas leaks and alerting the user.">
 
+            نحن فريق طلابي نعمل على تطوير فكرة تقنية تساعد على تعزيز السلامة
+            في المنازل من خلال اكتشاف تسرب الغاز وإرسال تنبيه للمستخدم.
 
-    <div class="about-card reveal">
-
-      <h3>
-        فكرة وقاء
-      </h3>
-
-      <p>
-
-        نحن فريق طلابي نعمل على تطوير
-        فكرة تقنية تساعد على اكتشاف تسرب
-        الغاز وتنبيه المستخدم بسرعة.
-
-        <br><br>
-
-        يجمع المشروع بين جهاز الاستشعار
-        والتقنية والتطبيق لتقديم طريقة
-        أكثر سهولة لمتابعة حالة المكان.
-
-      </p>
-
-
-      <div class="quote">
-
-        <strong>هدفنا:</strong>
-
-        تعزيز الوعي بالسلامة والاستفادة
-        من التقنية في حماية المنازل.
-
-      </div>
+        </p>
 
     </div>
-
-
-    <div class="info-card reveal">
-
-      <div class="info-list">
-
-
-        <div class="info-item">
-
-          <div class="info-icon">
-            🛡️
-          </div>
-
-          <div>
-
-            <strong>
-              السلامة أولاً
-            </strong>
-
-            <span>
-              التركيز على التنبيه المبكر
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="info-item">
-
-          <div class="info-icon">
-            💡
-          </div>
-
-          <div>
-
-            <strong>
-              فكرة تقنية
-            </strong>
-
-            <span>
-              دمج الجهاز مع التطبيق
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="info-item">
-
-          <div class="info-icon">
-            📲
-          </div>
-
-          <div>
-
-            <strong>
-              متابعة سهلة
-            </strong>
-
-            <span>
-              عرض التنبيهات للمستخدم
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="info-item">
-
-          <div class="info-icon">
-            🇴🇲
-          </div>
-
-          <div>
-
-            <strong>
-              مشروع طلابي عماني
-            </strong>
-
-            <span>
-              فكرة من الطلاب وللطلاب
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
 
 </section>
-
 
 
 <!-- =====================================================
      HOW
 ===================================================== -->
 
-<section
-  id="how"
-  class="how"
->
+<section id="how">
 
-  <div class="section-head reveal">
+    <div class="sectionTitle">
 
-    <div class="eyebrow">
-      آلية العمل
-    </div>
-
-    <h2>
-      كيف يعمل وقاء؟
-    </h2>
-
-    <p>
-      يعتمد المشروع على مجموعة خطوات
-      مترابطة لاكتشاف التسرب وإيصال التنبيه.
-    </p>
-
-  </div>
+        <small
+            data-ar="طريقة العمل"
+            data-en="HOW IT WORKS">
+            طريقة العمل
+        </small>
 
 
-  <div class="steps">
+        <h2
+            data-ar="كيف يعمل وقاء؟"
+            data-en="How Does WIQAA Work?">
+
+            كيف يعمل وقاء؟
+
+        </h2>
 
 
-    <div class="step reveal">
+        <p
+            data-ar="ثلاث خطوات بسيطة لفهم فكرة المشروع."
+            data-en="Three simple steps to understand the project.">
 
-      <div class="step-number">
-        01
-      </div>
+            ثلاث خطوات بسيطة لفهم فكرة المشروع.
 
-      <div class="step-icon">
-        🔍
-      </div>
-
-      <h3>
-        اكتشاف التسرب
-      </h3>
-
-      <p>
-        يقوم الجهاز بمراقبة وجود تسرب
-        للغاز باستخدام المستشعرات.
-      </p>
+        </p>
 
     </div>
 
 
-    <div class="step reveal">
+    <div class="steps">
 
-      <div class="step-number">
-        02
-      </div>
 
-      <div class="step-icon">
-        ⚠️
-      </div>
+        <div class="step">
 
-      <h3>
-        تحليل وتنبيه
-      </h3>
+            <div class="number">
+                01
+            </div>
 
-      <p>
-        عند اكتشاف حالة تستدعي التنبيه،
-        يتم إرسال إشعار للمستخدم.
-      </p>
+            <h3
+                data-ar="اكتشاف التسرب"
+                data-en="Detect">
+
+                اكتشاف التسرب
+
+            </h3>
+
+            <p
+                data-ar="يقوم الجهاز بمراقبة وجود تسرب للغاز."
+                data-en="The device monitors for a possible gas leak.">
+
+                يقوم الجهاز بمراقبة وجود تسرب للغاز.
+
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="number">
+                02
+            </div>
+
+            <h3
+                data-ar="إرسال التنبيه"
+                data-en="Alert">
+
+                إرسال التنبيه
+
+            </h3>
+
+            <p
+                data-ar="عند اكتشاف التسرب يتم تنبيه المستخدم."
+                data-en="When a leak is detected, the user receives an alert.">
+
+                عند اكتشاف التسرب يتم تنبيه المستخدم.
+
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="number">
+                03
+            </div>
+
+            <h3
+                data-ar="التطبيق"
+                data-en="App">
+
+                التطبيق
+
+            </h3>
+
+            <p
+                data-ar="يساعد التطبيق المستخدم على متابعة حالة الجهاز."
+                data-en="The app helps the user monitor the device status.">
+
+                يساعد التطبيق المستخدم على متابعة حالة الجهاز.
+
+            </p>
+
+        </div>
 
     </div>
-
-
-    <div class="step reveal">
-
-      <div class="step-number">
-        03
-      </div>
-
-      <div class="step-icon">
-        📱
-      </div>
-
-      <h3>
-        متابعة الحالة
-      </h3>
-
-      <p>
-        يستطيع المستخدم متابعة حالة
-        الجهاز والتنبيهات من خلال التطبيق.
-      </p>
-
-    </div>
-
-
-  </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -1460,196 +1167,209 @@ footer strong{
 
 <section id="features">
 
-  <div class="section-head reveal">
+    <div class="sectionTitle">
 
-    <div class="eyebrow">
-      لماذا وقاء؟
-    </div>
-
-    <h2>
-      مميزات المشروع
-    </h2>
-
-    <p>
-      مجموعة من الأفكار التي تجعل المشروع
-      عملياً وسهل الفهم والاستخدام.
-    </p>
-
-  </div>
+        <small
+            data-ar="المميزات"
+            data-en="FEATURES">
+            المميزات
+        </small>
 
 
-  <div class="features">
+        <h2
+            data-ar="لماذا وقاء؟"
+            data-en="Why WIQAA?">
+
+            لماذا وقاء؟
+
+        </h2>
 
 
-    <div class="feature reveal">
+        <p
+            data-ar="فكرة تقنية بسيطة تركز على التنبيه والسلامة."
+            data-en="A simple technology idea focused on alerts and safety.">
 
-      <div class="feature-icon">
-        🚨
-      </div>
+            فكرة تقنية بسيطة تركز على التنبيه والسلامة.
 
-      <div>
-
-        <h3>
-          تنبيه سريع
-        </h3>
-
-        <p>
-          يساعد النظام على إيصال التنبيه
-          للمستخدم عند اكتشاف التسرب.
         </p>
 
-      </div>
-
     </div>
 
 
-    <div class="feature reveal">
+    <div class="cards">
 
-      <div class="feature-icon">
-        📡
-      </div>
 
-      <div>
+        <div class="card">
 
-        <h3>
-          اتصال ذكي
-        </h3>
+            <div class="icon">
+                ⚠️
+            </div>
 
-        <p>
-          يربط المشروع بين الجهاز والتطبيق
-          لمتابعة الحالة.
-        </p>
+            <h3
+                data-ar="تنبيه سريع"
+                data-en="Fast Alerts">
 
-      </div>
+                تنبيه سريع
+
+            </h3>
+
+            <p
+                data-ar="يساعد النظام على تنبيه المستخدم عند اكتشاف تسرب."
+                data-en="The system helps alert the user when a leak is detected.">
+
+                يساعد النظام على تنبيه المستخدم عند اكتشاف تسرب.
+
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                📱
+            </div>
+
+            <h3
+                data-ar="متابعة عبر التطبيق"
+                data-en="App Monitoring">
+
+                متابعة عبر التطبيق
+
+            </h3>
+
+            <p
+                data-ar="يمكن متابعة حالة النظام من خلال التطبيق."
+                data-en="The system status can be monitored through the app.">
+
+                يمكن متابعة حالة النظام من خلال التطبيق.
+
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                🛡️
+            </div>
+
+            <h3
+                data-ar="السلامة أولاً"
+                data-en="Safety First">
+
+                السلامة أولاً
+
+            </h3>
+
+            <p
+                data-ar="هدف المشروع هو المساعدة في تعزيز السلامة داخل المنزل."
+                data-en="The goal is to help improve safety at home.">
+
+                هدف المشروع هو المساعدة في تعزيز السلامة داخل المنزل.
+
+            </p>
+
+        </div>
 
     </div>
-
-
-    <div class="feature reveal">
-
-      <div class="feature-icon">
-        🏠
-      </div>
-
-      <div>
-
-        <h3>
-          مناسب للمنزل
-        </h3>
-
-        <p>
-          صُممت الفكرة لتكون مرتبطة
-          بسلامة المستخدم داخل المنزل.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="feature reveal">
-
-      <div class="feature-icon">
-        ⚙️
-      </div>
-
-      <div>
-
-        <h3>
-          تقنية قابلة للتطوير
-        </h3>
-
-        <p>
-          يمكن تطوير المشروع مستقبلاً
-          بإضافة خصائص وتقنيات جديدة.
-        </p>
-
-      </div>
-
-    </div>
-
-
-  </div>
 
 </section>
-
 
 
 <!-- =====================================================
-     CTA
+     APP
 ===================================================== -->
 
-<section class="cta">
+<section>
 
-  <div class="cta-box reveal">
+    <div class="appBox">
 
-    <div class="eyebrow">
-      وقاء
+        <h2>
+            <span
+                data-ar="تقنية"
+                data-en="Technology">
+                تقنية
+            </span>
+
+            <span
+                data-ar=" في خدمة السلامة"
+                data-en=" For Safety">
+                 في خدمة السلامة
+            </span>
+        </h2>
+
+
+        <p
+            data-ar="يجمع وقاء بين جهاز الاستشعار والتنبيه والتطبيق لتقديم فكرة تقنية تساعد المستخدم على معرفة حالة النظام بسرعة."
+            data-en="WIQAA combines sensing, alerts, and an app into a technology concept designed to help users quickly understand the system status.">
+
+            يجمع وقاء بين جهاز الاستشعار والتنبيه والتطبيق لتقديم فكرة تقنية
+            تساعد المستخدم على معرفة حالة النظام بسرعة.
+
+        </p>
+
     </div>
 
-    <h2>
-      لأن الوقاية تبدأ من التنبيه
-    </h2>
-
-    <p>
-      تعرّف على مشروعنا وتابع مراحل تطويره.
-    </p>
-
-    <a
-      href="#contact"
-      class="btn btn-primary"
-    >
-      تابع المشروع
-    </a>
-
-  </div>
-
 </section>
-
 
 
 <!-- =====================================================
-     CONTACT
+     INSTAGRAM
 ===================================================== -->
 
-<section
-  id="contact"
-  class="contact"
->
+<section id="contact" class="instagram">
 
-  <div class="section-head reveal">
+    <div class="sectionTitle">
 
-    <div class="eyebrow">
-      تواصل معنا
+        <small
+            data-ar="تواصل معنا"
+            data-en="CONTACT US">
+            تواصل معنا
+        </small>
+
+
+        <h2
+            data-ar="تابع مشروع وقاء"
+            data-en="Follow WIQAA">
+
+            تابع مشروع وقاء
+
+        </h2>
+
     </div>
 
-    <h2>
-      تابع وقاء
-    </h2>
 
-    <p>
-      تابع حساب المشروع على إنستغرام
-      لمعرفة آخر التحديثات.
-    </p>
+    <div class="instagramBox">
+
+        <div class="instagramLogo">
+            ◎
+        </div>
 
 
-    <a
-      class="instagram"
-      href="https://instagram.com/97655z"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+        <h3>
+            Instagram
+        </h3>
 
-      📸
 
-      @97655z
+        <p>
+            @97655z
+        </p>
 
-    </a>
 
-  </div>
+        <a
+            class="instagramButton"
+            href="https://www.instagram.com/97655z/"
+            target="_blank">
+
+            📸 Instagram
+
+        </a>
+
+    </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -1658,113 +1378,148 @@ footer strong{
 
 <footer>
 
-  © 2026
+    <p>
+        © 2026
+        <strong>وقاء | WIQAA</strong>
+    </p>
 
-  <strong>
-    وقاء
-  </strong>
 
-  — مشروع طلابي عماني
+    <p
+        data-ar="مشروع طلابي للسلامة الذكية"
+        data-en="Student Smart Safety Project">
+
+        مشروع طلابي للسلامة الذكية
+
+    </p>
 
 </footer>
 
+
+<!-- TOP -->
+
+<button id="top" onclick="window.scrollTo(0,0)">
+    ↑
+</button>
 
 
 <script>
 
 /* =====================================================
-   MOBILE MENU
+   LANGUAGE SYSTEM
 ===================================================== */
 
-const menuBtn =
-  document.getElementById("menuBtn");
-
-const nav =
-  document.getElementById("nav");
+let currentLanguage = "ar";
 
 
-menuBtn.addEventListener("click",()=>{
+function setArabic(){
 
-  nav.classList.toggle("active");
+    currentLanguage = "ar";
 
-});
+    document.documentElement.lang = "ar";
+    document.documentElement.dir = "rtl";
 
+    closeLanguage();
 
-document.querySelectorAll("nav a").forEach(link=>{
+    updateLanguage();
 
-  link.addEventListener("click",()=>{
-
-    nav.classList.remove("active");
-
-  });
-
-});
+}
 
 
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
+function setEnglish(){
 
-const observer =
-  new IntersectionObserver(
+    currentLanguage = "en";
 
-    entries=>{
+    document.documentElement.lang = "en";
+    document.documentElement.dir = "ltr";
 
-      entries.forEach(entry=>{
+    closeLanguage();
 
-        if(entry.isIntersecting){
+    updateLanguage();
 
-          entry.target.classList.add("show");
+}
 
-        }
 
-      });
+function closeLanguage(){
 
-    },
+    const screen =
+        document.getElementById("languageScreen");
 
-    {
-      threshold:.12
+    screen.style.opacity = "0";
+
+    setTimeout(function(){
+
+        screen.style.display = "none";
+
+    },700);
+
+}
+
+
+function toggleLanguage(){
+
+    if(currentLanguage === "ar"){
+        currentLanguage = "en";
+    }else{
+        currentLanguage = "ar";
     }
 
-  );
+    updateLanguage();
+
+}
 
 
-document
-  .querySelectorAll(".reveal")
-  .forEach(el=>{
+function updateLanguage(){
 
-    observer.observe(el);
+    document
+        .querySelectorAll("[data-ar]")
+        .forEach(function(element){
 
-  });
+            element.textContent =
+                currentLanguage === "ar"
+                ? element.getAttribute("data-ar")
+                : element.getAttribute("data-en");
+
+        });
+
+
+    const button =
+        document.querySelector(".languageSwitch");
+
+
+    if(button){
+
+        button.textContent =
+            currentLanguage === "ar"
+            ? "🇬🇧 English"
+            : "🇴🇲 العربية";
+
+    }
+
+}
 
 
 /* =====================================================
-   HEADER SCROLL EFFECT
+   TOP BUTTON
 ===================================================== */
 
-const header =
-  document.querySelector("header");
+window.addEventListener("scroll",function(){
 
+    const top =
+        document.getElementById("top");
 
-window.addEventListener("scroll",()=>{
+    if(window.scrollY > 500){
 
-  if(window.scrollY > 30){
+        top.style.display = "block";
 
-    header.style.background =
-      "rgba(5,6,10,.92)";
+    }else{
 
-  }else{
+        top.style.display = "none";
 
-    header.style.background =
-      "rgba(7,8,12,.72)";
-
-  }
+    }
 
 });
 
 </script>
 
-
 </body>
 </html>
-```
